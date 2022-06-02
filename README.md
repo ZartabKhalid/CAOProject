@@ -1,2 +1,3 @@
 # CAOProject
 Bluetooth Control Home Automation Using Esp 32
+This project work explains how to control electrical appliances using an Android device. Physically challenged or elderly persons find it difficult to use traditional wall switches. This idea solves the problem by combining all of the electrical appliances into a single control unit that can be controlled using an Android mobile device (Android smartphone or Tablet). The suggested system uses the data supplied by the Android handset to regulate the electrical loads. To manage the electrical loads, an android application should be loaded on the user's phone or tablet. Using this android application, the user may send commands to the Bluetooth module to control the electrical loads.
