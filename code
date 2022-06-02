@@ -1,0 +1,58 @@
+#include "BluetoothSerial.h" 
+
+BluetoothSerial ESP_BT; 
+
+int Room_Ligth_1 = 13;
+int Room_Ligth_2 = 12;
+int Room_Ligth_3 = 14; 
+int TV = 27;
+int Fan = 26;    
+
+int incoming;
+
+void setup() {
+  Serial.begin(19200);
+  ESP_BT.begin("Electrify Circuit"); 
+
+  pinMode (Room_Ligth_1, OUTPUT);
+  pinMode (Room_Ligth_2, OUTPUT);
+  pinMode (Room_Ligth_3, OUTPUT);
+  pinMode (TV, OUTPUT);
+  pinMode (Fan, OUTPUT);
+}
+
+void loop() {
+  
+  
+  if (ESP_BT.available()) 
+  {
+    incoming = ESP_BT.read(); 
+
+    
+    int button = floor(incoming / 10);
+    int value = incoming % 10;
+    
+    switch (button) {
+      case 1:  
+        Serial.print("Button 1:"); Serial.println(value);
+        digitalWrite(Room_Ligth_1, value);
+        break;
+      case 2:  
+        Serial.print("Button 2:"); Serial.println(value);
+        digitalWrite(Room_Ligth_2, value);
+        break;
+      case 3:  
+        Serial.print("Button 3:"); Serial.println(value);
+        digitalWrite(Room_Ligth_3, value);
+        break;
+      case 4:  
+        Serial.print("Button 4:"); Serial.println(value);
+        digitalWrite(TV, value);
+        break;
+      case 5:  
+        Serial.print("Button 5:"); Serial.println(value);
+        digitalWrite(Fan, value);
+        break;
+    }
+  }
+}
